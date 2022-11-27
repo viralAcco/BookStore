@@ -15,4 +15,6 @@ public interface BookService {
     void deleteBook(int bookID);
     Book setLike(int bookID);
     ResponseEntity<HttpStatus> addCopies(BookCopies bc);
+    List<Book> sortedBooksByDate();
+    List<Book> sortedBooksByLikes();
 }

@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -92,5 +93,18 @@ public class BookServiceImpl implements BookService {
             bookCopiesRepository.save(bookCopies);
             return new ResponseEntity<>(HttpStatus.OK);
         }
+    }
+    @Override
+    public List<Book> sortedBooksByDate() {
+        List<Book> bookItems= bookRepository.findAll();
+        bookItems.sort(Comparator.comparing(Book::getBookLogTime));
+        return bookItems;
+    }
+
+    @Override
+    public List<Book> sortedBooksByLikes() {
+        List<Book> bookItems= bookRepository.findAll();
+        bookItems.sort(Comparator.comparing(Book::getBookLike));
+        return bookItems;
     }
 }
