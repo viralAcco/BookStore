@@ -11,11 +11,11 @@ import java.util.Date;
 public class BookRent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="br_id")
     private int brId;
 
     @Column(name = "user_id")
     private int userId;
-
     @Column(name = "book_id")
     private int bookId;
     @Column(name = "book_quantity")

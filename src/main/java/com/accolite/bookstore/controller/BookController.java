@@ -1,6 +1,7 @@
 package com.accolite.bookstore.controller;
 
 import com.accolite.bookstore.model.Book;
+import com.accolite.bookstore.model.BookCopies;
 import com.accolite.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,5 +46,11 @@ public class BookController {
     private HttpStatus deleteBook(@PathVariable int bookId){
         this.bookService.deleteBook(bookId);
         return HttpStatus.OK;
+    }
+
+    @PostMapping("/books/addCopies")
+    private ResponseEntity<HttpStatus> addCopies( @RequestBody BookCopies bc){
+        bookService.addCopies(bc);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

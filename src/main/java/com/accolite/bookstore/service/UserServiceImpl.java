@@ -48,7 +48,6 @@ public class UserServiceImpl implements UserService{
             User u = userObj.get();
             u.setUserId(user.getUserId());
             u.setUserName(user.getUserName());
-            u.setUserStatus(user.getUserStatus());
             u.setPhoneNum(user.getPhoneNum());
             u.setMailId(user.getMailId());
             u.setUserWallet(user.getUserWallet());

@@ -21,10 +21,12 @@ public class User {
     @Column(name = "phone_num",unique = true)
     private String phoneNum;
     @Column(name = "user_status")
-    @Value("1")
+    @Value("true")
     private boolean userStatus;
     @Column(name = "user_wallet")
     private int userWallet;
+    @Column(name="rented_books")
+    private int rentedBooks;
     @CreationTimestamp
     @Column(name = "user_log_time")
     private Date userLogTime;
@@ -61,18 +63,26 @@ public class User {
         this.phoneNum = phoneNum;
     }
 
-    public boolean getUserStatus() {
-        return userStatus;
-    }
-    public void setUserStatus(boolean userStatus) {
-        this.userStatus = userStatus;
-    }
     public int getUserWallet() {
         return userWallet;
     }
 
     public void setUserWallet(int userWallet) {
         this.userWallet = userWallet;
+    }
+    public boolean isUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(boolean userStatus){
+        this.userStatus = userStatus;
+    }
+    public int getRentedBooks() {
+        return rentedBooks;
+    }
+
+    public void setRentedBooks(int rentedBooks) {
+        this.rentedBooks = rentedBooks;
     }
     public Date getUserLogTime() {
         return userLogTime;

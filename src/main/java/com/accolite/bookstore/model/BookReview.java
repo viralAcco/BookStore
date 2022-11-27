@@ -16,7 +16,7 @@ public class BookReview {
     private int userId;
     @Column(name = "book_id")
     private int bookId;
-    @Column(name = "review")
+    @Column(name = "book_review")
     private String review;
     @CreationTimestamp
     private Date review_log_time;

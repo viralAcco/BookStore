@@ -8,6 +8,7 @@ create table user(
     phone_num varchar(20) unique,
     user_status boolean DEFAULT 1,
 	user_wallet int,
+    rented_books int,
     user_log_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     primary key(user_id)
 );
@@ -18,15 +19,15 @@ create table book(
     book_author varchar(20) not null,
     book_price int not null not null,
     book_category varchar(30) not null,
+    book_like int,
     book_log_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     primary key(book_id)
 );
 
-create table bookCount(
-	c_id int not null auto_increment,
+create table book_copies(
 	book_copies int ,
     book_id int not null,
-    primary key(c_id),
+    primary key(book_id),
 	foreign key(book_id) REFERENCES book(book_id)
 );
 
