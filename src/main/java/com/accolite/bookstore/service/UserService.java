@@ -20,4 +20,6 @@ public interface UserService {
 
     User suspendUser(User user);
 
+    void deleteUser(int id);
+
 }

@@ -1,6 +1,8 @@
 package com.accolite.bookstore.service;
 
+import com.accolite.bookstore.exception.BookException;
 import com.accolite.bookstore.exception.UserException;
+import com.accolite.bookstore.model.Book;
 import com.accolite.bookstore.model.User;
 import com.accolite.bookstore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,7 @@ public class UserServiceImpl implements UserService{
             u.setUserStatus(user.getUserStatus());
             u.setPhoneNum(user.getPhoneNum());
             u.setMailId(user.getMailId());
+            u.setUserWallet(user.getUserWallet());
             return this.userRepository.save(u);
         }else{
             throw new UserException("User didn't found with ID: "+ user.getUserId());
@@ -59,10 +62,20 @@ public class UserServiceImpl implements UserService{
         Optional<User> userObj = this.userRepository.findById(user.getUserId());
         if(userObj.isPresent()){
             User u = userObj.get();
-            u.setUserStatus(user.getUserStatus());
+            u.setUserStatus(false);
             return this.userRepository.save(u);
         }else{
-            throw new UserException("User didn't found with ID: "+ user.getUserId());
+            throw new UserException("User not found with id: "+ user.getUserId());
+        }
+    }
+
+    @Override
+    public void deleteUser(int userId) {
+        Optional<User> userObj = this.userRepository.findById(userId);
+        if(userObj.isPresent()){
+            this.userRepository.deleteById(userId);
+        }else{
+            throw new UserException("User didn't found with ID: "+ userId);
         }
     }
 }
