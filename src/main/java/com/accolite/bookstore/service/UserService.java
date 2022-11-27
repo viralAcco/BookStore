@@ -12,6 +12,8 @@ public interface UserService {
 
     User setUser(User user);
 
+    User addMoney(int id, int money);
+
     User updateUser(User user);
 
     List<User> getUsers();

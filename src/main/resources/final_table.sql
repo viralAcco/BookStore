@@ -23,26 +23,32 @@ create table book(
 );
 
 create table bookCount(
+	c_id int not null auto_increment,
 	book_copies int ,
     book_id int not null,
+    primary key(c_id),
 	foreign key(book_id) REFERENCES book(book_id)
 );
 
 create table review(
+	r_id int not null auto_increment,
 	user_id int not null,
     book_id int not null,
     book_review varchar(255),
-	
+	review_log_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    primary key(r_id),
     foreign key(book_id) REFERENCES book(book_id),
     foreign key(user_id) REFERENCES user(user_id)
 );
 
 create table rented(
+	br_id int not null auto_increment,
 	user_id int not null,
     book_id int not null,
     book_quantity int not null,
     issue_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    return_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,	
+    return_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	primary key(br_id),
     foreign key(book_id) REFERENCES book(book_id),
     foreign key(user_id) REFERENCES user(user_id)
 );

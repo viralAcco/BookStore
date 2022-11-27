@@ -26,6 +26,22 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User addMoney(int id, int money) {
+        Optional<User> userObj = this.userRepository.findById(id);
+        if(userObj.isPresent()){
+            if(money%500 == 0 && money != 0) {
+                User u = userObj.get();
+                u.setUserWallet(u.getUserWallet() + money);
+                return this.userRepository.save(u);
+            }else{
+                throw new UserException("You added money which is not multiple of 500: "+ id);
+            }
+        }else{
+            throw new UserException("User didn't found with ID: "+ id);
+        }
+    }
+
+    @Override
     public User updateUser(User user) {
         Optional<User> userObj = this.userRepository.findById(user.getUserId());
         if(userObj.isPresent()) {

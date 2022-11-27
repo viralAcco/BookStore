@@ -1,9 +1,7 @@
 package com.accolite.bookstore.service;
 
 import com.accolite.bookstore.exception.BookException;
-import com.accolite.bookstore.exception.UserException;
 import com.accolite.bookstore.model.Book;
-import com.accolite.bookstore.model.User;
 import com.accolite.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,7 +52,6 @@ public class BookServiceImpl implements BookService {
             throw new BookException("Book didn't found with ID: "+ bookID);
         }
     }
-
     @Override
     public void deleteBook(int bookID) {
         Optional<Book> bookObj = this.bookRepository.findById(bookID);
@@ -62,6 +59,17 @@ public class BookServiceImpl implements BookService {
             this.bookRepository.deleteById(bookID);
         }else{
             throw new BookException("Book didn't found with ID: "+ bookID);
+        }
+    }
+    @Override
+    public Book setLike(int bookID) {
+        Optional<Book> bookObj = this.bookRepository.findById(bookID);
+        if (bookObj.isPresent()) {
+            Book b = bookObj.get();
+            b.setBookLike(b.getBookLike() + 1);
+            return bookRepository.save(b);
+        } else {
+            return null;
         }
     }
 }

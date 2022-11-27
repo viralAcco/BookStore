@@ -36,6 +36,11 @@ public class BookController {
         return ResponseEntity.ok().body(this.bookService.updateBook(book));
     }
 
+    @PutMapping(path = "/likeBook/{bookId}")
+    private ResponseEntity<Book> likeBook(@PathVariable int bookId){
+        return ResponseEntity.ok().body((this.bookService.setLike(bookId)));
+    }
+
     @DeleteMapping("/removeBook/{bookId}")
     private HttpStatus deleteBook(@PathVariable int bookId){
         this.bookService.deleteBook(bookId);

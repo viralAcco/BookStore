@@ -20,6 +20,8 @@ public class Book {
     private int bookPrice;
     @Column(name="book_category", nullable=false)
     private String bookCategory;
+    @Column(name="book_like")
+    private int bookLike;
     @CreationTimestamp
     @Column(name="book_log_time")
     private Date bookLogTime;
@@ -64,11 +66,19 @@ public class Book {
         this.bookCategory = bookCategory;
     }
 
+    public int getBookLike() {
+        return bookLike;
+    }
+
+    public void setBookLike(int bookLike) {
+        this.bookLike = bookLike;
+    }
+
     public Date getBookLogTime() {
         return bookLogTime;
     }
 
-    public void setBook_log_time(Date bookLogTime) {
+    public void setBookLogTime(Date bookLogTime) {
         this.bookLogTime = bookLogTime;
     }
 }

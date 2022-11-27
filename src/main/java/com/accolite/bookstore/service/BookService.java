@@ -10,4 +10,5 @@ public interface BookService {
     List<Book> getBook();
     Book getBookById(int bookID);
     void deleteBook(int bookID);
+    Book setLike(int bookID);
 }

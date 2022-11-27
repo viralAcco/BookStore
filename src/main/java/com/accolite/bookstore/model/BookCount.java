@@ -7,13 +7,23 @@ import javax.persistence.*;
 public class BookCount {
 
     @Id
-    @Column(name="book_id", nullable=false, unique = true)
+    @Column(name="c_Id", nullable=false)
+    private int cId;
+    @Column(name="book_id")
     private int bookId;
     @Column(name="book_copies")
     private int bookCopies;
 
     public int getBookId() {
         return bookId;
+    }
+
+    public int getcId() {
+        return cId;
+    }
+
+    public void setcId(int cId) {
+        this.cId = cId;
     }
 
     public void setBookId(int bookId) {
