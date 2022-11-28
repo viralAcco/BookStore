@@ -39,12 +39,16 @@ public class UserController{
     private ResponseEntity<User> updateWallet(@PathVariable int userId, @PathVariable int money){
         return ResponseEntity.ok().body(this.userService.addMoney(userId, money));
     }
+//    @PutMapping("/suspendUser/{userId}")
+//    private ResponseEntity<User> suspendUser(@PathVariable int userId,@RequestBody User user) {
+//        user.setUserId(userId);
+//        return ResponseEntity.ok().body(this.userService.suspendUser(user));
+//    }
     @PutMapping("/suspendUser/{userId}")
-    private ResponseEntity<User> suspendUser(@PathVariable int userId,@RequestBody User user) {
-        user.setUserId(userId);
-        return ResponseEntity.ok().body(this.userService.suspendUser(user));
+    private HttpStatus suspendUser(@PathVariable int userId){
+        this.userService.suspendUser(userId);
+        return HttpStatus.OK;
     }
-
     @DeleteMapping("/removeUser/{userId}")
     private HttpStatus deleteUser(@PathVariable int userId){
         this.userService.deleteUser(userId);

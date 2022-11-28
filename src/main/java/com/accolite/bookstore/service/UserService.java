@@ -20,8 +20,8 @@ public interface UserService {
 
     User getUserById(int id);
 
-    User suspendUser(User user);
-
+//    User suspendUser(User user);
+    User suspendUser(int id);
     void deleteUser(int id);
 
 }

@@ -69,17 +69,33 @@ public class UserServiceImpl implements UserService{
             throw new UserException("User didn't found with ID: "+ id);
         }
     }
+
     @Override
-    public User suspendUser(User user) {
-        Optional<User> userObj = this.userRepository.findById(user.getUserId());
+    public User suspendUser(int id) {
+        Optional<User> userObj = this.userRepository.findById(id);
         if(userObj.isPresent()){
             User u = userObj.get();
             u.setUserStatus(false);
             return this.userRepository.save(u);
         }else{
-            throw new UserException("User not found with id: "+ user.getUserId());
+            throw new UserException("User didn't found with ID: "+ id);
         }
     }
+
+
+//    @Override
+//    public User suspendUser(User user) {
+//        Optional<User> userObj = this.userRepository.findById(user.getUserId());
+//        if(userObj.isPresent()){
+//            User u = userObj.get();
+//            u.setUserStatus(false);
+//            return this.userRepository.save(u);
+//        }else{
+//            throw new UserException("User not found with id: "+ user.getUserId());
+//        }
+//    }
+
+
     @Override
     public void deleteUser(int userId) {
         Optional<User> userObj = this.userRepository.findById(userId);

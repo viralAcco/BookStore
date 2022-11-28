@@ -50,7 +50,9 @@ public class BorrowServiceImpl implements BorrowService{
 
         if(userObj.isPresent() && bookObj.isPresent()){
             double neededBal = 0.3*(double)(book.getBookPrice());
+            if(neededBal>user.getUserWallet()){
 
+            }
             if(bookCopies.getBookCopies() > 0 && user.isUserStatus() && neededBal<user.getUserWallet() && user.getRentedBooks()<3){
                 bookCopies.setBookCopies(bookCopies.getBookCopies()-1);
                 user.setUserWallet(user.getUserWallet()-(0.2*(double)(book.getBookPrice())));
@@ -146,7 +148,3 @@ public class BorrowServiceImpl implements BorrowService{
             return false;
     }
 }
-
-//        Optional<User> uObj = userRepository.findById(userId);
-//        Optional<Book> bObj = bookRepository.findById(bookId);
-//        if (uObj.isPresent() && bObj.isPresent()) {
