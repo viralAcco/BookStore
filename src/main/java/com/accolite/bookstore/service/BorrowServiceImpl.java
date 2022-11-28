@@ -1,5 +1,6 @@
 package com.accolite.bookstore.service;
 
+import com.accolite.bookstore.exception.UserException;
 import com.accolite.bookstore.model.*;
 import com.accolite.bookstore.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,7 @@ public class BorrowServiceImpl implements BorrowService{
         if(userObj.isPresent() && bookObj.isPresent()){
             double neededBal = 0.3*(double)(book.getBookPrice());
             if(neededBal>user.getUserWallet()){
-
+                throw new UserException("Not Enough Money!");
             }
             if(bookCopies.getBookCopies() > 0 && user.isUserStatus() && neededBal<user.getUserWallet() && user.getRentedBooks()<3){
                 bookCopies.setBookCopies(bookCopies.getBookCopies()-1);

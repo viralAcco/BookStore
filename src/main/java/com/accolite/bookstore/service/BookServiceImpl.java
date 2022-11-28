@@ -77,7 +77,6 @@ public class BookServiceImpl implements BookService {
             return null;
         }
     }
-
     @Override
     public ResponseEntity<HttpStatus> addCopies(BookCopies bookCopies) {
         Optional<BookCopies> bookCopiesObj = this.bookCopiesRepository.findById(bookCopies.getBookId());
@@ -101,7 +100,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> sortedBooksByLikes() {
         List<Book> bookItems= bookRepository.findAll();
-        bookItems.sort(Comparator.comparing(Book::getBookLike));
+        bookItems.sort(Comparator.comparing(Book::getBookLike).reversed());
         return bookItems;
     }
 }

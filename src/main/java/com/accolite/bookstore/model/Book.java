@@ -25,6 +25,7 @@ public class Book {
     @CreationTimestamp
     @Column(name="book_log_time")
     private Date bookLogTime;
+    // implement get reviews lazy load them
 
     public int getBookId() {
         return bookId;
