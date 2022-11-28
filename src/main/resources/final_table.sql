@@ -7,7 +7,7 @@ create table user(
     mail_id varchar(255) unique,
     phone_num varchar(20) unique,
     user_status boolean DEFAULT 1,
-	user_wallet int,
+	user_wallet double,
     rented_books int,
     user_log_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     primary key(user_id)
@@ -48,7 +48,7 @@ create table rented(
     book_id int not null,
     book_quantity int not null,
     issue_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    return_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    return_date TIMESTAMP DEFAULT null,
 	primary key(br_id),
     foreign key(book_id) REFERENCES book(book_id),
     foreign key(user_id) REFERENCES user(user_id)

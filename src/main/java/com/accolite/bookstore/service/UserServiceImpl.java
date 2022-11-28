@@ -40,7 +40,6 @@ public class UserServiceImpl implements UserService{
             throw new UserException("User didn't found with ID: "+ id);
         }
     }
-
     @Override
     public User updateUser(User user) {
         Optional<User> userObj = this.userRepository.findById(user.getUserId());
@@ -56,7 +55,6 @@ public class UserServiceImpl implements UserService{
             throw new UserException("User didn't found with ID: "+ user.getUserId());
         }
     }
-
     @Override
     public List<User> getUsers() {
         return this.userRepository.findAll();
@@ -71,7 +69,6 @@ public class UserServiceImpl implements UserService{
             throw new UserException("User didn't found with ID: "+ id);
         }
     }
-
     @Override
     public User suspendUser(User user) {
         Optional<User> userObj = this.userRepository.findById(user.getUserId());
@@ -83,7 +80,6 @@ public class UserServiceImpl implements UserService{
             throw new UserException("User not found with id: "+ user.getUserId());
         }
     }
-
     @Override
     public void deleteUser(int userId) {
         Optional<User> userObj = this.userRepository.findById(userId);

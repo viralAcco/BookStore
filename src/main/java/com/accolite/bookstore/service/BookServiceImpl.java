@@ -24,12 +24,10 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     public BookCopiesRepository bookCopiesRepository;
-
     @Override
     public Book addBook(Book book) {
         return bookRepository.save(book);
     }
-
     @Override
     public Book updateBook(Book book) {
         Optional<Book> bookObj = this.bookRepository.findById(book.getBookId());
@@ -45,7 +43,6 @@ public class BookServiceImpl implements BookService {
             throw new BookException("Book didn't found with ID: "+ book.getBookId());
         }
     }
-
     @Override
     public List<Book> getBook() {
         return this.bookRepository.findAll();

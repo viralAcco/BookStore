@@ -39,9 +39,8 @@ public class UserController{
     private ResponseEntity<User> updateWallet(@PathVariable int userId, @PathVariable int money){
         return ResponseEntity.ok().body(this.userService.addMoney(userId, money));
     }
-
-    @PutMapping("/updateUserStatus/{userId}")
-    private ResponseEntity<User> updateUserStatus(@PathVariable int userId,@RequestBody User user) {
+    @PutMapping("/suspendUser/{userId}")
+    private ResponseEntity<User> suspendUser(@PathVariable int userId,@RequestBody User user) {
         user.setUserId(userId);
         return ResponseEntity.ok().body(this.userService.suspendUser(user));
     }

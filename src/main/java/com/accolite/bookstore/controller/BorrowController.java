@@ -20,4 +20,15 @@ public class BorrowController {
     private ResponseEntity<HttpStatus> updateUser(@PathVariable int userId,@PathVariable int bookId, @RequestBody String review){
         return borrowService.reviewBook(userId,bookId,review);
     }
+
+    @PutMapping("/books/return/{brId}")
+    private ResponseEntity<HttpStatus> returnBook(@PathVariable int brId){
+        return borrowService.returnBook(brId);
+    }
+
+    @PostMapping("/books/like/{userId}/{bookId}")
+    private ResponseEntity<HttpStatus> likeBook(@PathVariable int userId, @PathVariable int bookId){
+        return borrowService.likeBook(userId,bookId);
+    }
+
 }

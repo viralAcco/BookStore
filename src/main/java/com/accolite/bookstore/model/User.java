@@ -24,7 +24,7 @@ public class User {
     @Value("true")
     private boolean userStatus;
     @Column(name = "user_wallet")
-    private int userWallet;
+    private double userWallet;
     @Column(name="rented_books")
     private int rentedBooks;
     @CreationTimestamp
@@ -63,17 +63,16 @@ public class User {
         this.phoneNum = phoneNum;
     }
 
-    public int getUserWallet() {
+    public double getUserWallet() {
         return userWallet;
     }
 
-    public void setUserWallet(int userWallet) {
+    public void setUserWallet(double userWallet) {
         this.userWallet = userWallet;
     }
     public boolean isUserStatus() {
         return userStatus;
     }
-
     public void setUserStatus(boolean userStatus){
         this.userStatus = userStatus;
     }

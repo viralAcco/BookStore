@@ -61,5 +61,4 @@ public class BookController {
     private  List<Book> sortedBooksByLikes(){
         return bookService.sortedBooksByLikes();
     }
-
 }
